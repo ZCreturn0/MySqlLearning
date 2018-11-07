@@ -49,7 +49,71 @@ var successInfo;
 ]
 */
 
+// 更新数据
+// sql = 'UPDATE stu SET age = 21 WHERE id = 1';
+// successInfo = 'id 1 age updated';
 
+// 删除数据
+// sql = 'DELETE FROM stu WHERE id = 3';
+// successInfo = 'id 3 deleted';
+
+// LIKE
+// sql = 'SELECT * FROM stu WHERE name LIKE "%a"';
+/*
+    [ 
+        RowDataPacket { id: 1, name: 'aaa', age: 21, addr: 'aaaaaaaaaa' } 
+    ]
+*/
+
+// UNION
+// sql = `
+//     SELECT class from math
+//     UNION
+//     SELECT class from chinese
+// `;
+/*
+    [ 
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 1 } 
+    ]
+*/
+// sql = `
+//     SELECT class from math
+//     UNION ALL
+//     SELECT class from chinese
+// `;
+/*
+    [ 
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 1 },
+        RowDataPacket { class: 1 },
+        RowDataPacket { class: 1 },
+        RowDataPacket { class: 1 },
+        RowDataPacket { class: 1 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 2 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 },
+        RowDataPacket { class: 3 } 
+    ]
+*/
+// 至少有一门及格
+// sql = `
+//     SELECT id FROM chinese WHERE score >= 60
+//     UNION
+//     SELECT id FROM math WHERE score >= 60
+//     ORDER BY id
+// `;
 
 connection.query(sql,function(err,results,fields){
     if(err){

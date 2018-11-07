@@ -50,6 +50,21 @@ SELECT column_name,column_name
 FROM table_name
 [WHERE Clause]
 [LIMIT N][ OFFSET M]
+WHERE [condition]
 你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。
 limit N,M : 相当于 offset N limit M , 从第 N 条记录开始, 返回 M 条记录
 
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+
+DELETE FROM table_name [WHERE Clause]
+
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions]
+UNION [ALL | DISTINCT]
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions];
+UNION:删除重复数据
+UNION ALL:不删除重复数据
