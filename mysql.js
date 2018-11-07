@@ -12,6 +12,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 var sql;
+var sqlValues;
 var successInfo;
 // 创建数据库
 // sql = 'create database learning';
@@ -34,12 +35,28 @@ var successInfo;
 // sql = 'DROP TABLE aaa';
 // successInfo = 'table aaa droped';
 
+// 插入数据
+// sql = "INSERT INTO stu(name,age,addr) VALUES(?,?,?)";
+// sqlValues = ['bbb',12,'bbbbbbbbb'];
+// successInfo = 'insert info into stu';
+
+// 查询数据
+// sql = 'SELECT * FROM stu';
+/*
+[ 
+    RowDataPacket { id: 1, name: 'aaa', age: 12, addr: 'aaaaaaaaaa' },
+    RowDataPacket { id: 2, name: 'bbb', age: 12, addr: 'bbbbbbbbb' } 
+]
+*/
+
+
+
 connection.query(sql,function(err,results,fields){
     if(err){
         console.log(err);
     }
     else{
-        console.log(successInfo);
+        console.log(results);
     }
 })
 

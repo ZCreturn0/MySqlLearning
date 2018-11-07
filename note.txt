@@ -43,3 +43,13 @@ ENGINE 设置存储引擎，CHARSET 设置编码。
 DROP TABLE table_name ; //删除表
 truncate table table_name;  //删除数据,保存结构
 delete from student;
+
+INSERT INTO table_name ( field1, field2,...fieldN ) VALUES( value1, value2,...valueN ),( value1, value2,...valueN );
+
+SELECT column_name,column_name
+FROM table_name
+[WHERE Clause]
+[LIMIT N][ OFFSET M]
+你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。
+limit N,M : 相当于 offset N limit M , 从第 N 条记录开始, 返回 M 条记录
+
