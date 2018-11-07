@@ -1,0 +1,29 @@
+登录 MySQL:
+> mysql -u username -p
+> password:*****
+mysql> 
+输入 exit 或 quit 退出登录
+
+添加用户(需修改my.ini,解除严格模式)
+1.
+mysql> use mysql
+Database changed
+mysql> insert into user(host,user,password,select_priv,insert_priv,update_priv) values('localhost','guest',MD5('guest'),'Y','Y','Y');
+2.
+mysql> grant select,insert,update,delete,create,drop
+    -> on TUTORAILS.*
+    -> TO 'guest'@'localhost'
+    -> IDENTIFIED BY 'guest';
+
+(stuD为数据库名,stuT为表名)
+
+use databaseName: use stuD;
+show databases:列出所有数据库
+show tables(要先选择数据库):
+    use stuD;
+    show tables;
+show columns from stuT:显示表的列
+show index from stuT:显示表的索引
+show table status from mysql like 'user%'\G;    //展示mysql数据库以'user'开头的表的状态,\G:查询结果按列打印
+
+CREATE DATABASE 数据库名;
