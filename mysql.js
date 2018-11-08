@@ -36,9 +36,9 @@ var successInfo;
 // successInfo = 'table aaa droped';
 
 // 插入数据
-// sql = "INSERT INTO stu(name,age,addr) VALUES(?,?,?)";
-// sqlValues = ['bbb',12,'bbbbbbbbb'];
-// successInfo = 'insert info into stu';
+sql = "INSERT INTO stu(name,age,addr) VALUES(?,?,?)";
+sqlValues = ['ggg',12,'gggggggg'];
+successInfo = 'insert info into stu';
 
 // 查询数据
 // sql = 'SELECT * FROM stu';
@@ -125,15 +125,25 @@ var successInfo;
 // sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a RIGHT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
 
 // 正则
-sql = `SELECT * FROM tcount_tbl WHERE runoob_author REGEXP '^RUNOOB'`;
+// sql = `SELECT * FROM tcount_tbl WHERE runoob_author REGEXP '^RUNOOB'`;
 
-connection.query(sql,function(err,results,fields){
+//事务
+connection.beginTransaction(function(err){
     if(err){
         console.log(err);
     }
     else{
-        console.log(results);
+        // 执行插入
+        connection.query(sql,sqlValues, function (err, results, fields) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(results);
+                connection.rollback();
+                connection.commit();
+                connection.end();
+            }
+        })
     }
 })
-
-connection.end();
