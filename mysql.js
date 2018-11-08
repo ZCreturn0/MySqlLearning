@@ -116,7 +116,13 @@ var successInfo;
 // `;
 
 // GROUP BY
-sql = `SELECT coalesce(class,'平均分'),AVG(score) AS avg FROM chinese GROUP BY class WITH ROLLUP`;
+// sql = `SELECT coalesce(class,'平均分'),AVG(score) AS avg FROM chinese GROUP BY class WITH ROLLUP`;
+
+// JOIN
+// sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a,tcount_tbl b WHERE a.runoob_author = b.runoob_author`;
+// sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
+// sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a LEFT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
+sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a RIGHT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
 
 connection.query(sql,function(err,results,fields){
     if(err){
