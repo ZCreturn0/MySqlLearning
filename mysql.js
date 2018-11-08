@@ -122,7 +122,10 @@ var successInfo;
 // sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a,tcount_tbl b WHERE a.runoob_author = b.runoob_author`;
 // sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
 // sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a LEFT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
-sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a RIGHT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
+// sql = `SELECT a.runoob_title,a.runoob_author,a.submission_date,b.runoob_count from runoob_tbl a RIGHT JOIN tcount_tbl b ON a.runoob_author = b.runoob_author`;
+
+// 正则
+sql = `SELECT * FROM tcount_tbl WHERE runoob_author REGEXP '^RUNOOB'`;
 
 connection.query(sql,function(err,results,fields){
     if(err){
