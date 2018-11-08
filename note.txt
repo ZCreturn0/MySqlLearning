@@ -68,3 +68,25 @@ FROM tables
 [WHERE conditions];
 UNION:删除重复数据
 UNION ALL:不删除重复数据
+
+SELECT field1, field2,...fieldN table_name1, table_name2...
+ORDER BY field1, [field2...] [ASC [DESC]]
+
+MySQL 拼音排序
+gbk:
+SELECT * 
+FROM runoob_tbl
+ORDER BY runoob_title;
+utf8:
+SELECT * 
+FROM runoob_tbl
+ORDER BY CONVERT(runoob_title using gbk);
+
+SELECT column_name, function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name
+WITH ROLLUP;
+WITH ROLLUP:相当于总计功能
+
+SELECT name ,sum(*)  FROM employee_tbl WHERE id<>1 GROUP BY name  HAVING sum(*)>5 ORDER BY sum(*) DESC;

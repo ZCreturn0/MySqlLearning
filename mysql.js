@@ -112,8 +112,11 @@ var successInfo;
 //     SELECT id FROM chinese WHERE score >= 60
 //     UNION
 //     SELECT id FROM math WHERE score >= 60
-//     ORDER BY id
+//     ORDER BY id DESC
 // `;
+
+// GROUP BY
+sql = `SELECT coalesce(class,'平均分'),AVG(score) AS avg FROM chinese GROUP BY class WITH ROLLUP`;
 
 connection.query(sql,function(err,results,fields){
     if(err){
