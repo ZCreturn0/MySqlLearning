@@ -36,9 +36,9 @@ var successInfo;
 // successInfo = 'table aaa droped';
 
 // 插入数据
-sql = "INSERT INTO stu(name,age,addr) VALUES(?,?,?)";
-sqlValues = ['ggg',12,'gggggggg'];
-successInfo = 'insert info into stu';
+//  sql = "INSERT INTO stu(name,age,addr) VALUES(?,?,?)";
+//  sqlValues = ['iii',12,'iiiiiiii'];
+// successInfo = 'insert info into stu';
 
 // 查询数据
 // sql = 'SELECT * FROM stu';
@@ -127,23 +127,50 @@ successInfo = 'insert info into stu';
 // 正则
 // sql = `SELECT * FROM tcount_tbl WHERE runoob_author REGEXP '^RUNOOB'`;
 
-//事务
-connection.beginTransaction(function(err){
-    if(err){
+// 事务
+// connection.beginTransaction(function(err){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         // 执行插入
+//         connection.query(sql,sqlValues, function (err, results, fields) {
+//             if (err) {
+//                 console.log(err);
+//             }
+//             else {
+//                 console.log(results);
+//                 connection.rollback();
+//                 connection.commit();
+//                 connection.end();
+//             }
+//         })
+//     }
+// })
+
+// ALTER
+// 增加字段
+// sql = `ALTER TABLE stu add sno INT NOT NULL`;
+// 修改字段:MODIFY 修改类型         CHANGE 修改字段名和类型
+// 修改字段类型
+// sql = `ALTER TABLE stu MODIFY sno char(10)`;
+// 修改字段名和类型
+// sql = `ALTER TABLE stu CHANGE sno so varchar(10)`;
+// sql = `ALTER TABLE stu MODIFY so char(10) NOT NULL DEFAULT 1`;
+// 修改默认值
+// sql = `ALTER TABLE stu ALTER so SET DEFAULT 100`;
+// 删除默认值
+// sql = `ALTER TABLE stu ALTER so DROP DEFAULT`;
+// 修改表名
+sql = `ALTER TABLE stu RENAME TO student`;
+
+
+connection.query(sql, sqlValues, function (err, results, fields) {
+    if (err) {
         console.log(err);
     }
-    else{
-        // 执行插入
-        connection.query(sql,sqlValues, function (err, results, fields) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(results);
-                connection.rollback();
-                connection.commit();
-                connection.end();
-            }
-        })
+    else {
+        console.log(results);
     }
 })
+connection.end();
