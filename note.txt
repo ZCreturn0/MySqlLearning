@@ -124,3 +124,29 @@ alter table tableName engine=myisam;
 删除外键约束
 alter table tableName drop foreign key keyName;
 
+单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。组合索引，即一个索引包含多个列。
+普通索引:
+创建索引:CREATE INDEX indexName ON mytable(username(length)); 
+修改表结构(添加索引):ALTER table tableName ADD INDEX indexName(columnName)
+创建表的时候直接指定:
+CREATE TABLE mytable(  
+    ID INT NOT NULL,   
+    username VARCHAR(16) NOT NULL,  
+    INDEX [indexName] (username(length))  
+);  
+删除索引:
+DROP INDEX [indexName] ON mytable; 
+
+唯一索引:与普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一
+创建索引:CREATE UNIQUE INDEX indexName ON mytable(username(length)) 
+修改表结构:ALTER table mytable ADD UNIQUE [indexName] (username(length))
+创建表的时候直接指定:
+CREATE TABLE mytable(  
+    ID INT NOT NULL,   
+    username VARCHAR(16) NOT NULL,  
+    UNIQUE [indexName] (username(length))  
+);  
+
+临时表:CREATE TEMPORARY TABLE
+
+

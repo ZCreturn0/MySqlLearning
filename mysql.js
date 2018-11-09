@@ -162,8 +162,14 @@ var successInfo;
 // 删除默认值
 // sql = `ALTER TABLE stu ALTER so DROP DEFAULT`;
 // 修改表名
-sql = `ALTER TABLE stu RENAME TO student`;
+// sql = `ALTER TABLE stu RENAME TO student`;
 
+// 创建索引
+// sql = `CREATE INDEX sno ON student(so)`;
+// 显示索引
+// sql = `SHOW INDEX FROM student`;
+// 删除索引
+sql = `DROP INDEX sno ON student`;
 
 connection.query(sql, sqlValues, function (err, results, fields) {
     if (err) {
