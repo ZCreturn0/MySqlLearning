@@ -149,4 +149,10 @@ CREATE TABLE mytable(
 
 临时表:CREATE TEMPORARY TABLE
 
-
+复制表:
+第一、只复制表结构到新表
+create table 新表 select * from 旧表 where 1=2
+或者
+create table 新表 like 旧表 
+第二、复制表结构及数据到新表
+create table新表 select * from 旧表 
