@@ -156,3 +156,10 @@ create table 新表 select * from 旧表 where 1=2
 create table 新表 like 旧表 
 第二、复制表结构及数据到新表
 create table新表 select * from 旧表 
+
+INSERT IGNORE INTO与INSERT INTO的区别就是INSERT IGNORE会忽略数据库中已经存在的数据，如果数据库没有数据，就插入新的数据，
+如果有数据的话就跳过这条数据。这样就可以保留数据库中已经存在数据，达到在间隙中插入数据的目的。
+INSERT IGNORE INTO当插入数据时，在设置了记录的唯一性后，如果插入重复数据，将不返回错误，只以警告形式返回
+REPLACE INTO into如果存在primary 或 unique相同的记录，则先删除掉。再插入新记录。
+
+
